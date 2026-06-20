@@ -27,6 +27,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Student Profile'),
+        centerTitle: true,
+        backgroundColor: Colors.blue.shade900,
+        foregroundColor: Colors.white,
+      ),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
