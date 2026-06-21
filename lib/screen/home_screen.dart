@@ -1,75 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class StudentProScreen extends StatefulWidget {
-  const StudentProScreen({super.key});
+class PersonalProCard extends StatefulWidget {
+  const PersonalProCard({super.key});
 
   @override
-  State<StudentProScreen> createState() => _StudentProScreenState();
+  State<PersonalProCard> createState() => _PersonalProCardState();
 }
 
-final _showSnackBar = SnackBar(content: Text('Mike Rack marked as Present ✅'));
-
-class _StudentProScreenState extends State<StudentProScreen> {
-  void _showDialog() {
+class _PersonalProCardState extends State<PersonalProCard> {
+  void showUserDetailDialog() {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: ListTile(
-          leading: Icon(Icons.school, color: Colors.blue.shade900),
-          title: Text('Student Details', style: TextStyle(fontSize: 14.sp)),
-        ),
         content: Column(
           mainAxisSize: .min,
+          mainAxisAlignment: .center,
+          spacing: 8,
           children: [
-            ListTile(
-              leading: Icon(Icons.person, color: Colors.blue.shade900),
-              title: RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: 'Name: ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    TextSpan(text: 'Mick Rack'),
-                  ],
-                ),
+            CircleAvatar(
+              radius: 55,
+              backgroundImage: NetworkImage(
+                'https://cdn.ostad.app/user/avatar/2024-06-30T09-24-57.418Z-picofme%20(6).png',
               ),
             ),
-            ListTile(
-              leading: Icon(Icons.badge, color: Colors.blue.shade900),
-              title: RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: 'ID: ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    TextSpan(text: 'STU-2025-0042'),
-                  ],
-                ),
-              ),
+            Text(
+              'Farshid Evan',
+              style: TextStyle(fontSize: 24, fontWeight: .bold),
             ),
-            ListTile(
-              leading: Icon(Icons.apartment, color: Colors.blue.shade900),
-              title: RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                      text: 'Dept: ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    TextSpan(text: 'CSE'),
-                  ],
-                ),
-              ),
+            Text(
+              'Flutter Developer',
+              style: TextStyle(fontSize: 18, color: Colors.grey.shade600),
+            ),
+            Text(
+              'App Developer crafting high-performance,\n cross-platform mobile apps for iOS and Android.',
+              textAlign: TextAlign.center,
+            ),
+            Divider(height: 20),
+            Row(
+              spacing: 8,
+              children: [Icon(Icons.email, size: 20), Text('fevan@ostad.app')],
+            ),
+            Row(
+              spacing: 8,
+              children: [Icon(Icons.phone, size: 20), Text('+123 456 7890')],
             ),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.pop(context);},
+              Navigator.pop(context);
+            },
             child: Text('Close'),
           ),
         ],
@@ -81,132 +62,301 @@ class _StudentProScreenState extends State<StudentProScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Student Profile'),
+        title: Text('Profile Card'),
+        backgroundColor: Colors.indigo.shade400,
+        titleTextStyle: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
         centerTitle: true,
-        backgroundColor: Colors.blue.shade900,
-        foregroundColor: Colors.white,
       ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: .center,
-            children: [
-              Card(
-                elevation: 20,
-                child: SizedBox(
-                  width: 280.w,
-                  child: Padding(
-                    padding: const EdgeInsets.all(24),
-                    child: Column(
-                      mainAxisAlignment: .center,
-                      mainAxisSize: MainAxisSize.min,
-                      spacing: 10,
-                      children: [
-                        Stack(
-                          children: [
-                            CircleAvatar(
-                              radius: 60,
-                              child: Image.network(
-                                fit: BoxFit.cover,
-                                'https://img.pikbest.com/png-images/20241128/man-avatar-3d-icon-isolated-on-transparent-background-_11144108.png!sw800',
-                              ),
+
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                Card(
+                  elevation: 10,
+                  child: SizedBox(
+                    height: 450,
+                    width: double.infinity,
+                    child: Padding(
+                      padding: const EdgeInsets.all(24),
+                      child: Column(
+                        mainAxisAlignment: .center,
+                        spacing: 8,
+                        children: [
+                          CircleAvatar(
+                            radius: 55,
+                            backgroundImage: NetworkImage(
+                              'https://cdn.ostad.app/user/avatar/2024-06-30T09-24-57.418Z-picofme%20(6).png',
                             ),
-                            Positioned(
-                              top: 0,
-                              right: 0,
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 6,
-                                  vertical: 2,
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.redAccent,
-                                ),
-                                child: Text(
-                                  'New',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.white,
+                          ),
+                          Text(
+                            'Farshid Evan',
+                            style: TextStyle(fontSize: 24, fontWeight: .bold),
+                          ),
+                          Text(
+                            'Flutter Developer',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.grey.shade600,
+                            ),
+                          ),
+                          Text(
+                            'App Developer crafting high-performance,\n cross-platform mobile apps for iOS and Android.',
+                            textAlign: TextAlign.center,
+                          ),
+                          Divider(),
+                          Row(
+                            spacing: 8,
+                            children: [
+                              Icon(Icons.email, size: 20),
+                              Text('fevan@ostad.app'),
+                            ],
+                          ),
+                          Row(
+                            spacing: 8,
+                            children: [
+                              Icon(Icons.phone, size: 20),
+                              Text('+123 456 7890'),
+                            ],
+                          ),
+                          SizedBox(height: 6),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ElevatedButton(
+                                onPressed: () {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: RichText(
+                                        text: TextSpan(
+                                          children: [
+                                            TextSpan(
+                                              text: 'You are now following ',
+                                              style: TextStyle(fontSize: 12),
+                                            ),
+                                            TextSpan(
+                                              text: 'Farshid Evan',
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      showCloseIcon: true,
+                                      behavior: SnackBarBehavior.floating,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      duration: Duration(seconds: 5),
+                                    ),
+                                  );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue.shade600,
+                                  foregroundColor: Colors.white,
+                                  minimumSize: Size(130, 32),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
                                 ),
+                                child: Text(
+                                  'Follow',
+                                  style: TextStyle(fontSize: 16),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Text(
-                          'Mark Rack',
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue.shade900,
-                          ),
-                        ),
-                        Text(
-                          'ID: STU-2025-0042',
-                          style: TextStyle(fontSize: 10.sp, color: Colors.grey),
-                        ),
-                        Text(
-                          'Computer Science & Engineering',
-                          style: TextStyle(fontSize: 10.sp, color: Colors.grey),
-                        ),
-                        SizedBox(height: 8),
-                        SizedBox(
-                          height: 35.h,
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue.shade900,
-                              foregroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
+                              ElevatedButton(
+                                onPressed: () {
+                                  showUserDetailDialog();
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue.shade600,
+                                  foregroundColor: Colors.white,
+                                  minimumSize: Size(130, 32),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                                child: Text(
+                                  'View Profile',
+                                  style: TextStyle(fontSize: 16),
+                                ),
                               ),
-                            ),
-                            onPressed: () {
-                              _showDialog();
-                            },
-                            child: Row(
-                              mainAxisAlignment: .center,
-                              spacing: 8,
-                              children: [
-                                Icon(Icons.info_outline),
-                                Text('View Details'),
-                              ],
-                            ),
+                            ],
                           ),
-                        ),
-                        SizedBox(height: 6),
-                        SizedBox(
-                          height: 35.h,
-                          width: double.infinity,
-                          child: OutlinedButton(
-                            onPressed: () => ScaffoldMessenger.of(
-                              context,
-                            ).showSnackBar(_showSnackBar),
-
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(color: Colors.green),
-                              foregroundColor: Colors.green,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                            child: Row(
-                              spacing: 8,
-                              mainAxisAlignment: .center,
-                              children: [
-                                Icon(Icons.check_circle_outline_outlined),
-                                Text('Mark Present'),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+                Row(
+                  mainAxisAlignment: .center,
+                  children: [
+                    Expanded(child: Divider(indent: 10, height: 50)),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Text(
+                        'Interests',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Expanded(child: Divider(height: 50, endIndent: 10)),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: .spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Card(
+                        elevation: 10,
+                        shadowColor: Colors.black54,
+                        child: Padding(
+                          padding: const EdgeInsets.all(6),
+                          child: SizedBox(
+                            height: 200,
+                            child: Column(
+                              spacing: 5,
+                              crossAxisAlignment: .start,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.network(
+                                    width: double.infinity,
+                                    height: 90,
+                                    fit: BoxFit.cover,
+                                    'https://thumbs.dreamstime.com/b/beautiful-tropical-landscape-maldives-island-beach-palm-trees-perfect-tropical-banner-amazing-tropical-beach-landscape-palm-113634836.jpg',
+                                  ),
+                                ),
+
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 4,
+                                  ),
+                                  child: Column(
+                                    spacing: 2,
+                                    crossAxisAlignment: .start,
+                                    children: [
+                                      Text(
+                                        'Travel ',
+                                        style: TextStyle(
+                                          fontWeight: .bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Text(
+                                        'The world is too wide to stay in one coordinates.',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.grey.shade300,
+                                    foregroundColor: Colors.blueAccent,
+                                    elevation: 0,
+                                    minimumSize: Size(double.infinity, 28),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(6),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    'View More',
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Card(
+                        elevation: 10,
+                        shadowColor: Colors.black54,
+                        child: Padding(
+                          padding: const EdgeInsets.all(6),
+                          child: SizedBox(
+                            height: 200,
+                            child: Column(
+                              spacing: 5,
+                              crossAxisAlignment: .start,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.network(
+                                    width: double.infinity,
+                                    height: 90,
+                                    fit: BoxFit.cover,
+                                    'https://st4.depositphotos.com/10256402/27450/i/450/depositphotos_274504098-stock-photo-photographer-are-sitting-look-the.jpg',
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 4,
+                                  ),
+                                  child: Column(
+                                    spacing: 2,
+                                    crossAxisAlignment: .start,
+                                    children: [
+                                      Text(
+                                        'Photography',
+                                        style: TextStyle(
+                                          fontWeight: .bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Take photos as a return ticket to a moment otherwise gone.',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.grey.shade300,
+                                    foregroundColor: Colors.blueAccent,
+                                    elevation: 0,
+                                    minimumSize: Size(double.infinity, 28),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(6),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    'View More',
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
