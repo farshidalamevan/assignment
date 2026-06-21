@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PersonalProCard extends StatefulWidget {
   const PersonalProCard({super.key});
@@ -81,7 +82,7 @@ class _PersonalProCardState extends State<PersonalProCard> {
                 Card(
                   elevation: 10,
                   child: SizedBox(
-                    height: 450,
+                    height: 340.h,
                     width: double.infinity,
                     child: Padding(
                       padding: const EdgeInsets.all(24),
@@ -223,7 +224,7 @@ class _PersonalProCardState extends State<PersonalProCard> {
                         child: Padding(
                           padding: const EdgeInsets.all(6),
                           child: SizedBox(
-                            height: 200,
+                            height: 155.h,
                             child: Column(
                               spacing: 5,
                               crossAxisAlignment: .start,
@@ -292,7 +293,7 @@ class _PersonalProCardState extends State<PersonalProCard> {
                         child: Padding(
                           padding: const EdgeInsets.all(6),
                           child: SizedBox(
-                            height: 200,
+                            height: 155.h,
                             child: Column(
                               spacing: 5,
                               crossAxisAlignment: .start,
