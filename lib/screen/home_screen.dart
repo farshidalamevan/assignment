@@ -14,18 +14,18 @@ class _Exam15State extends State<Exam15> {
       margin: EdgeInsets.all(4),
       color: Colors.grey.shade200,
       child: ListTile(
-        leading: Icon(Icons.person, color: Colors.brown, size: 30.sp),
+        leading: Icon(Icons.person, color: Colors.brown, size: 28.sp),
         title: Text(
           name,
           style: TextStyle(
             color: Colors.redAccent,
             fontWeight: FontWeight.w600,
-            fontSize: 16.sp,
+            fontSize: 15.sp,
           ),
         ),
         subtitle: Text(
           number,
-          style: TextStyle(color: Colors.black, fontSize: 14.sp),
+          style: TextStyle(color: Colors.black, fontSize: 13.sp),
         ),
         trailing: Icon(Icons.phone, color: Colors.blue),
       ),
@@ -39,8 +39,8 @@ class _Exam15State extends State<Exam15> {
         title: Text('Contact List'),
         backgroundColor: Colors.blueGrey,
         titleTextStyle: TextStyle(
-          fontSize: 20.sp,
-          fontWeight: FontWeight.bold,
+          fontSize: 18.sp,
+          fontWeight: FontWeight.w600,
           color: Colors.white,
         ),
         centerTitle: true,
